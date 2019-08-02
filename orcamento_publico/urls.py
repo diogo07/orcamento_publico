@@ -16,9 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url
 from django.urls import path, include
-
+from orcamento_publico import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.get_index),
     url(r'^api/', include(('api.urls', 'api'), namespace='api')),
+    url(r'^orcamento', views.get_orcamento),
+    url(r'^receitasorcamentarias', views.get_receitas_orcamentarias),
+    url(r'^municipios', views.get_municipios),
 ]

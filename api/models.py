@@ -6,7 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-
+from unidecode import unidecode
 
 class ClassificacaoDespesa(models.Model):
     codigo = models.IntegerField(primary_key=True)
@@ -58,10 +58,16 @@ class FuncaoReceita(models.Model):
 
 
 class Municipio(models.Model):
+
+
+
     codigo = models.IntegerField(primary_key=True)
     nome = models.CharField(max_length=70)
     uf = models.CharField(max_length=2)
     regiao = models.CharField(max_length=20)
+
+    def nome_sem_acento(self, nome):
+        return unidecode(nome)
 
     class Meta:
         managed = False

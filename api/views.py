@@ -18,7 +18,8 @@ def municipio_by_codigo(request, codigo_municipio):
 # BUSCA O MUNICIPIO PELO NOME
 def municipio_by_nome(request, nome_municipio):
     try:
-        municipio = Municipio.objects.filter(nome__icontains=nome_municipio)
+        nome_tratado = nome_municipio.replace('_', ' ')
+        municipio = Municipio.objects.filter(nome__icontains=nome_tratado)
     except Municipio.DoesNotExist:
         return HttpResponse(status=404)
 
@@ -30,7 +31,7 @@ def municipio_by_nome(request, nome_municipio):
 # BUSCA AS DESPESAS DE UM MUNICIPIO POR CLASSIFICAÇÃO E ANO
 def despesa_por_classificacao_municipio_e_ano(request, codigo_municipio, ano):
     try:
-        despesas = Despesa.objects.filter(municipio_codigo=codigo_municipio, ano=ano).values('municipio_codigo__nome', 'classificacao_despesa_codigo__tipo', 'ano').annotate(valor_total = Sum('valor')).order_by('valor_total')
+        despesas = Despesa.objects.filter(municipio_codigo=codigo_municipio, ano=ano).values('municipio_codigo__nome', 'municipio_codigo__uf', 'municipio_codigo__regiao', 'classificacao_despesa_codigo__tipo', 'ano').annotate(valor_total = Sum('valor')).order_by('-valor_total')
 
         context = []
         dados = []
@@ -45,6 +46,8 @@ def despesa_por_classificacao_municipio_e_ano(request, codigo_municipio, ano):
         context.append(
             {
                 'municipio': despesas[0]['municipio_codigo__nome'],
+                'uf': despesas[0]['municipio_codigo__uf'],
+                'regiao': despesas[0]['municipio_codigo__regiao'],
                 'ano': despesas[0]['ano'],
                 'despesas': dados
 
@@ -60,20 +63,23 @@ def despesa_por_classificacao_municipio_e_ano(request, codigo_municipio, ano):
 # BUSCA AS DESPESAS DE UM MUNICIPIO POR FUNÇÃO E ANO
 def despesa_por_funcao_municipio_e_ano(request, codigo_municipio, ano):
     try:
-        despesas = Despesa.objects.filter(municipio_codigo=codigo_municipio, ano=ano).values('municipio_codigo__nome', 'funcao_despesa_codigo__tipo', 'ano').annotate(valor_total = Sum('valor')).order_by('valor_total')
+        despesas = Despesa.objects.filter(municipio_codigo=codigo_municipio, ano=ano).values('municipio_codigo__nome', 'municipio_codigo__uf', 'municipio_codigo__regiao', 'funcao_despesa_codigo__tipo', 'ano').annotate(valor_total = Sum('valor')).order_by('-valor_total')
 
         context = []
         dados = []
         for despesa in despesas:
             dados.append(
                 {
-                    despesa['funcao_despesa_codigo__tipo']: despesa['valor_total']
+                    'funcao' : despesa['funcao_despesa_codigo__tipo'],
+                    'valor' : despesa['valor_total']
                 }
             )
 
         context.append(
             {
                 'municipio': despesas[0]['municipio_codigo__nome'],
+                'uf': despesas[0]['municipio_codigo__uf'],
+                'regiao': despesas[0]['municipio_codigo__regiao'],
                 'ano': despesas[0]['ano'],
                 'despesas': dados
 
@@ -90,10 +96,12 @@ def despesa_por_funcao_municipio_e_ano(request, codigo_municipio, ano):
 # BUSCA AS DESPESAS DE UM MUNICIPIO, E AGRUPA O VALOR TOTAL POR ANO
 def despesa_por_municipio(request, codigo_municipio):
     try:
-        despesas = Despesa.objects.filter(municipio_codigo=codigo_municipio).values('municipio_codigo__nome', 'ano').annotate(valor_total = Sum('valor')).order_by('valor_total')
+        despesas = Despesa.objects.filter(municipio_codigo=codigo_municipio).values('municipio_codigo__nome', 'municipio_codigo__uf', 'municipio_codigo__regiao', 'ano').annotate(valor_total = Sum('valor')).order_by('ano')
 
         context = []
         dados = []
+
+        print(despesas[0]['ano'])
         for despesa in despesas:
             dados.append(
                 {
@@ -104,6 +112,8 @@ def despesa_por_municipio(request, codigo_municipio):
         context.append(
             {
                 'municipio': despesas[0]['municipio_codigo__nome'],
+                'uf': despesas[0]['municipio_codigo__uf'],
+                'regiao': despesas[0]['municipio_codigo__regiao'],
                 'despesas': dados
 
             }
@@ -119,7 +129,7 @@ def despesa_por_municipio(request, codigo_municipio):
 # BUSCA AS RECEITAS DE UM MUNICIPIO, E AGRUPA O VALOR TOTAL POR ANO
 def receita_por_municipio(request, codigo_municipio):
     try:
-        receitas = Receita.objects.filter(municipio_codigo=codigo_municipio).values('municipio_codigo__nome', 'ano').annotate(valor_total = Sum('valor')).order_by('valor_total')
+        receitas = Receita.objects.filter(municipio_codigo=codigo_municipio).values('municipio_codigo__nome', 'municipio_codigo__uf', 'municipio_codigo__regiao', 'ano').annotate(valor_total = Sum('valor')).order_by('ano')
 
         context = []
         dados = []
@@ -133,6 +143,8 @@ def receita_por_municipio(request, codigo_municipio):
         context.append(
             {
                 'municipio': receitas[0]['municipio_codigo__nome'],
+                'uf': receitas[0]['municipio_codigo__uf'],
+                'regiao': receitas[0]['municipio_codigo__regiao'],
                 'receitas': dados
 
             }
@@ -147,7 +159,7 @@ def receita_por_municipio(request, codigo_municipio):
 # BUSCA AS RECEITAS DE UM MUNICIPIO POR CLASSIFICAÇÃO E ANO
 def receita_por_classificacao_municipio_e_ano(request, codigo_municipio, ano):
     try:
-        receitas = Receita.objects.filter(municipio_codigo=codigo_municipio, ano=ano).values('municipio_codigo__nome', 'classificacao_receita_codigo__tipo', 'ano').annotate(valor_total = Sum('valor')).order_by('valor_total')
+        receitas = Receita.objects.filter(municipio_codigo=codigo_municipio, ano=ano).values('municipio_codigo__nome', 'municipio_codigo__uf', 'municipio_codigo__regiao', 'classificacao_receita_codigo__tipo', 'ano').annotate(valor_total = Sum('valor')).order_by('-valor_total')
 
         context = []
         dados = []
@@ -162,8 +174,10 @@ def receita_por_classificacao_municipio_e_ano(request, codigo_municipio, ano):
         context.append(
             {
                 'municipio': receitas[0]['municipio_codigo__nome'],
+                'uf': receitas[0]['municipio_codigo__uf'],
+                'regiao': receitas[0]['municipio_codigo__regiao'],
                 'ano': receitas[0]['ano'],
-                'despesas': dados
+                'receitas': dados
 
             }
         )
@@ -177,20 +191,23 @@ def receita_por_classificacao_municipio_e_ano(request, codigo_municipio, ano):
 # BUSCA AS RECEITAS DE UM MUNICIPIO POR FUNÇÃO E ANO
 def receita_por_funcao_municipio_e_ano(request, codigo_municipio, ano):
     try:
-        receitas = Receita.objects.filter(municipio_codigo=codigo_municipio, ano=ano).values('municipio_codigo__nome', 'funcao_receita_codigo__tipo', 'ano').annotate(valor_total = Sum('valor')).order_by('valor_total')
+        receitas = Receita.objects.filter(municipio_codigo=codigo_municipio, ano=ano).values('municipio_codigo__nome', 'municipio_codigo__uf', 'municipio_codigo__regiao', 'funcao_receita_codigo__tipo', 'ano').annotate(valor_total = Sum('valor')).order_by('-valor_total')
 
         context = []
         dados = []
         for receita in receitas:
             dados.append(
                 {
-                    receita['funcao_receita_codigo__tipo']: receita['valor_total']
+                    'funcao' : receita['funcao_receita_codigo__tipo'],
+                    'valor': receita['valor_total']
                 }
             )
 
         context.append(
             {
                 'municipio': receitas[0]['municipio_codigo__nome'],
+                'uf': receitas[0]['municipio_codigo__uf'],
+                'regiao': receitas[0]['municipio_codigo__regiao'],
                 'ano': receitas[0]['ano'],
                 'despesas': dados
 
