@@ -1,0 +1,62 @@
+{% load static %}
+
+@font-face {
+    font-family: 'Courier New';
+    src: url("../fonts/courier-new-cyr.ttf");
+}
+
+
+h2{
+    margin-bottom: 50px;
+    margin-top: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+p{
+    text-align: justify;
+    text-indent: 2.5em;
+    font-family: 'Poppins', sans-serif;
+}
+
+.codigo{
+    font-family: 'Courier New';
+}
+
+.link{
+    color: #2aabd2;
+}
+
+.parametro{
+    color: red;
+}
+
+h4{
+    font-family: 'Courier New';
+    font-size: 17px;
+    color: #0AC01C;
+}
+
+.space1{
+    text-indent: 2.5em;
+}
+
+.space2{
+    text-indent: 5.0em;
+}
+
+.space3{
+    text-indent: 7.5em;
+}
+
+.space4{
+    text-indent: 10em;
+}
+
+.space5{
+    text-indent: 12.5em;
+}
+
+ul, li{
+    text-align: justify;
+}

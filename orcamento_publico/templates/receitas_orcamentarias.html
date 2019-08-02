@@ -1,0 +1,212 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Receitas Orçamentárias</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/receitas_orcamentarias.css' %}">
+</head>
+<body>
+
+{#    menu     #}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand titulo" href="/">API ORÇAMENTO PÚBLICO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Digite sua pesquisa" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+      </div>
+    </nav>
+
+{#Corpo#}
+
+    <div class="container">
+        <h2>Introdução</h2>
+
+        <p>Para realizar requisições na parte de receitas é necessário a passagem de alguns parâmetros, dentre eles está o código de cada municipio, que é exemplificado na seção <a href="/municipios">municipios</a>. Essa API fornece três tipos de consultas para a parte de receitas orçamentárias, que são: receitas anuais por município; receitas anuais por classificação e município e; receitas anuais por função e município. Abaixo serão demonstrados alguns exemplos destas consultas.</p>
+
+
+        <h2>Receitas Anuais por Município</h2>
+
+        <p>Para esse tipo de consulta necessita-se do <a href="/municipios">código do município</a>, no exemplo abaixo, foi utilizado o código <span class="parametro">2512309</span>, do município de Princesa Isabel - PB. </p>
+
+        <p><b>Requisição:</b> <span class="link">http://127.0.0.1:8000/api/receita/municipio/<span class="parametro">2512309</span></span></p>
+
+        <p>
+            <b>Resposta:</b>
+
+            <span class="codigo">
+                <h4 class="space1">[</h4>
+
+                    <h4 class="space2">{</h4>
+
+                        <h4 class="space3">"municipio": "Princesa Isabel", </h4>
+                        <h4 class="space3">"uf": "PB", </h4>
+                        <h4 class="space3">"regiao": "Nordeste", </h4>
+
+                        <h4 class="space3">"receitas": [</h4>
+
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"2014": 40632311.88</h4>
+                            <h4 class="space4">}, </h4>
+
+                            <h4 class="space4">{  </h4>
+                                <h4 class="space5">"2015": 44758861.83</h4>
+                            <h4 class="space4">}, </h4>
+
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"2016": 48023069.51</h4>
+                            <h4 class="space4">}, </h4>
+
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"2017": 48143541.8</h4>
+                            <h4 class="space4">}, </h4>
+
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"2018": 56975470.23</h4>
+                            <h4 class="space4">}</h4>
+                        <h4 class="space3">]</h4>
+
+                    <h4 class="space2">}</h4>
+
+                <h4 class="space1">]</h4>
+            </span>
+        </p>
+
+
+
+        <h2>Receitas por Município, Classificação e Ano</h2>
+
+        <p>Esse tipo de consulta requer a passagem de dois parâmetros, o primeiro é o <a href="/municipios">código do município</a>, que é exemplificado na seção municípios. Como exemplo, será usado o código da cidade de Princesa Isabel - PB, que corresponde a <span class="parametro">2512309</span>, o segundo parâmetro é o ano da receita, para este exemplo será utilizado o ano de <span class="parametro">2017</span>. Veja abaixo como ficou a consulta:</p>
+
+        <p><b>Requisição:</b> <span class="link">http://127.0.0.1:8000/api/receita/classificacao/municipio/<span class="parametro">2512309</span>/ano/<span class="parametro">2017</span></span></p>
+
+        <p>
+            <b>Resposta:</b>
+
+            <span class="codigo">
+                <h4 class="space1">[</h4>
+
+                    <h4 class="space2">{</h4>
+
+                        <h4 class="space3">"municipio": "Princesa Isabel", </h4>
+                        <h4 class="space3">"uf": "PB", </h4>
+                        <h4 class="space3">"regiao": "Nordeste", </h4>
+
+                        <h4 class="space3">"ano": 2017</h4>
+
+                        <h4 class="space3">"receitas": [</h4>
+
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"classificacao": "Receitas Brutas Realizadas"</h4>
+                                <h4 class="space5">"valor": 44942716.42</h4>
+                            <h4 class="space4">}, </h4>
+
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"classificacao": "Deduções - FUNDEB"</h4>
+                                <h4 class="space5">"valor": 3200825.38</h4>
+                            <h4 class="space4">}, </h4>
+
+
+                        <h4 class="space3">]</h4>
+
+                    <h4 class="space2">}</h4>
+
+                <h4 class="space1">]</h4>
+            </span>
+        </p>
+
+
+        <h2>Receitas por Município, Função e Ano</h2>
+
+        <p>Esse tipo de consulta requer a passagem de dois parâmetros, o primeiro é o <a href="/municipios">código do município</a>, que é exemplificado na seção municípios. Como exemplo, será usado o código da cidade de Princesa Isabel - PB, que corresponde a <span class="parametro">2512309</span>, o segundo parâmetro é o ano da receita, para este exemplo será utilizado o ano de <span class="parametro">2017</span>. Veja abaixo como ficou a consulta:</p>
+
+        <p><b>Requisição:</b> <span class="link">http://127.0.0.1:8000/api/receita/funcao/municipio/<span class="parametro">2512309</span>/ano/<span class="parametro">2017</span></span></p>
+
+        <p>
+            <b>Resposta:</b>
+
+            <span class="codigo">
+                <h4 class="space1">[</h4>
+
+                    <h4 class="space2">{</h4>
+
+                        <h4 class="space3">"municipio": "Princesa Isabel", </h4>
+                        <h4 class="space3">"uf": "PB", </h4>
+                        <h4 class="space3">"regiao": "Nordeste", </h4>
+
+                        <h4 class="space3">"ano": 2017</h4>
+
+                        <h4 class="space3">"receitas": [</h4>
+
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"funcao": "Receitas Correntes"</h4>
+                                <h4 class="space5">"valor": 45091510.75</h4>
+                            <h4 class="space4">}, </h4>
+
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"funcao": "Receitas de Capital"</h4>
+                                <h4 class="space5">"valor": 1611581.78</h4>
+                            <h4 class="space4">}, </h4>
+
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"funcao": "Receitas Correntes - Intraorcamentarias"</h4>
+                                <h4 class="space5">"valor": 1440449.27</h4>
+                            <h4 class="space4">}, </h4>
+
+
+                        <h4 class="space3">]</h4>
+
+                    <h4 class="space2">}</h4>
+
+                <h4 class="space1">]</h4>
+            </span>
+        </p>
+
+        <div class="margem_grande">
+
+        </div>
+
+    </div>
+
+
+
+
+{#    rodapé    #}
+
+    <footer>
+
+        <div class="contato">
+            <br>
+            <h5>CONTATO</h5>
+            <h6>E-mail: diogosousa36@gmail.com</h6>
+            <h6>Linked in: <a href="https://www.linkedin.com/in/diogo-sousa-47164493/">Diogo Sousa</a> </h6>
+
+        </div>
+
+        <div class="ajuda">
+
+
+        </div>
+
+        <div class="legenda">Copyleft @2019 - Diogo Sousa</div>
+    </footer>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orçamento Público</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/orcamento.css' %}">
+</head>
+<body>
+    {#    menu     #}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand titulo" href="/">API ORÇAMENTO PÚBLICO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Digite sua pesquisa" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="container">
+        <h2>Introdução</h2>
+        <p>
+            O Orçamento Público consiste em um instrumento de planejamento e execução para as
+        finanças públicas. Nele, são estimadas as receitas e fixadas as despesas orçamentárias que serão
+        realizadas durante o exercício correspondente. Por meio desses detalhamentos,
+        é possível acompanhar as escolhas feitas pelo governo e o destino que será dado aos recursos
+        públicos a cada ano.
+        </p>
+
+        <p>
+        O processo de planejamento envolve várias etapas, porém três delas se destacam: a
+        aprovação da Lei do Plano Plurianual (PPA), Lei de Diretrizes Orçamentárias (LDO) e Lei
+        Orçamentária Anual (LOA).
+        </p>
+        <p>
+        O PPA se caracteriza pela elaboração de estratégias e definição de metas para o período
+        de quatro anos. A LDO é elaborada anualmente e objetiva determinar metas e prioridades da
+        administração, incluindo investimentos para o próximo ano, enquanto a LOA trata do orçamento
+        em si, ela estabelece que seja demonstrado aos cidadãos a forma como será distribuído o dinheiro
+        dos cofres públicos e as instituições as quais serão destinados os recursos.</p>
+        <p>
+        A LOA é uma lei que tem caráter de autorização e não de imposição, pois o gestor de
+        cada orçamento tem a opção de executar ou não as despesas nela incluídas, ela é coberta por atos
+        formais, examinando as receitas e estabelecendo as despesas que serão executadas no período de
+        um ano.
+        </p>
+
+        <h2>Receita</h2>
+
+        <p>
+            A classificação da receita orçamentária é de utilização obrigatória por todos os entes da
+        Federação, sendo facultado o seu desdobramento para atendimento das respectivas necessidades (BRASIL, 2019). Sobre o assunto, as receitas orçamentárias são classificadas segundo os
+        seguintes critérios:
+        </p>
+
+        <ol>
+            <li> natureza de receita; </li>
+            <li> indicador de resultado primário;</li>
+            <li> fonte/destinação de recursos; e</li>
+            <li> esfera orçamentária.</li>
+        </ol>
+
+        <p>
+            O critério natureza da receita visa identificar o motivo do ingresso da receita nos
+        cofres públicos. O indicador de resultado primário refere-se às receitas correntes que advêm
+        dos tributos, das contribuições sociais, das concessões, dos dividendos recebidos pela União. O
+        critério fonte/destinação de recursos especifica tanto quem deverá aplicar a receita quanto qual
+        atividade deverá ser financiada por meio dessa receita. Por último, o critério esfera orçamentária,
+        que visa identificar se a receita pertence ao Orçamento Fiscal, da Seguridade Social ou de
+        Investimento das Empresas Estatais.
+        </p>
+
+        <h2>Despesa</h2>
+
+        <p>
+            As despesas especificadas no orçamento realizado pelos órgãos públicos, podem ser
+classificadas da seguinte forma:
+        </p>
+
+        <ul>
+            <li> <b>Despesas Empenhadas:</b> valores reservados para os gastos planejados;</li>
+            <li> <b>Despesas Liquidadas:</b> valores das despesas concretizadas;</li>
+            <li> <b>Despesas Pagas:</b> ocorrem quando o fornecedor de fato recebe pelo serviço ou produto
+            disponibilizado.</li>
+
+        </ul>
+
+
+        <p> Os itens de classificação da despesa descritos acima ainda podem ser divididos em
+            outros aspectos, como:</p>
+
+        <ol>
+
+            <li> Classificação da Despesa por Esfera Orçamentária;</li>
+            <li> Classificação Institucional;</li>
+            <li> Classificação Funcional da Despesa.</li>
+        </ol>
+
+    </div>
+
+
+{#    rodapé    #}
+
+    <footer>
+
+        <div class="contato">
+            <br>
+            <h5>CONTATO</h5>
+            <h6>E-mail: diogosousa36@gmail.com</h6>
+            <h6>Linked in: <a href="https://www.linkedin.com/in/diogo-sousa-47164493/">Diogo Sousa</a> </h6>
+
+        </div>
+
+        <div class="ajuda">
+
+
+        </div>
+
+        <div class="legenda">Copyleft @2019 - Diogo Sousa</div>
+    </footer>
+
+
+
+</body>
+</html>
