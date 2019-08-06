@@ -23,6 +23,7 @@ urlpatterns = [
     path('', views.get_index),
     url(r'^api/', include(('api.urls', 'api'), namespace='api')),
     url(r'^orcamento', views.get_orcamento),
-    url(r'^receitasorcamentarias', views.get_receitas_orcamentarias),
+    url(r'^receitas', views.get_receitas),
+    url(r'^despesas', views.get_despesas),
     url(r'^municipios', views.get_municipios),
 ]

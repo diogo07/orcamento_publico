@@ -20,20 +20,15 @@
 
 {#    menu     #}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand titulo" href="/">API ORÇAMENTO PÚBLICO</a>
+        <a class="navbar-brand titulo" href="/">
+            Fiscaliza Cidadão API
+            <img src="{% static 'images/logo.png' %}" width="40" height="40" class="d-inline-block align-top" alt="">
+            </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
 
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Digite sua pesquisa" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-        </form>
-      </div>
     </nav>
 
 {#      container       #}
@@ -41,7 +36,7 @@
 <div class="container">
 
     <a class="link" href="/orcamento">
-        <div class="card" style="width: 16rem;">
+        <div class="card">
           <img src="{% static 'images/orcamento.png' %}" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Orçamento <br> Público</h5>
@@ -50,8 +45,8 @@
         </div>
     </a>
 
-    <a class="link" href="/receitasorcamentarias">
-      <div class="card" style="width: 16rem;">
+    <a class="link" href="/receitas">
+      <div class="card" >
           <img src="{% static 'images/receita.png' %}" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Receitas <br> Orçamentárias</h5>
@@ -61,8 +56,8 @@
     </a>
 
 
-    <a class="link" href="#">
-        <div class="card" style="width: 16rem;">
+    <a class="link" href="/despesas">
+        <div class="card">
           <img src="{% static 'images/despesa.png' %}" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Despesas Orçamentárias</h5>
@@ -72,7 +67,7 @@
     </a>
 
      <a class="link" href="/municipios">
-      <div class="card" style="width: 16rem;">
+      <div class="card">
           <img src="{% static 'images/municipios.png' %}" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Consulta <br>de Municípios</h5>

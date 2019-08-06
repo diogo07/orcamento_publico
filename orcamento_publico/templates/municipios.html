@@ -20,20 +20,15 @@
 
 {#    menu     #}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand titulo" href="/">API ORÇAMENTO PÚBLICO</a>
+        <a class="navbar-brand titulo" href="/">
+            Fiscaliza Cidadão API
+            <img src="{% static 'images/logo.png' %}" width="40" height="40" class="d-inline-block align-top" alt="">
+            </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
 
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Digite sua pesquisa" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-        </form>
-      </div>
     </nav>
 
 
@@ -45,7 +40,7 @@
 
             <ul>
                 <li>
-                    <b>Por nome: </b> nessa opção, pode-se passar o nome completo do município, ou parte dele. É importante destacar que a requisição não aceita espaços, dessa forma, caso o nome do município contenha mais de uma palavra, deve-se inserir um <b>_</b> entre as palavras, para a API reconhecer o espaço existente. Por exemplo, para buscar a cidade de João Pessoa, seria enviado a palavra <b>João_Pessoa</b>.
+                    <b>Por nome: </b> nessa opção, pode-se passar o nome completo do município, ou parte dele. É importante destacar que a requisição não aceita espaços, dessa forma, caso o nome do município contenha mais de uma palavra, deve-se inserir um <b>underline</b> entre as palavras, para a API reconhecer o espaço existente. Por exemplo, para buscar a cidade de Princesa Isabel, deverá ser escrito <b>Princesa_Isabel</b>.
                 </li>
             </ul>
 
@@ -57,7 +52,142 @@
 
         </p>
 
+        <h2>Caracteres Especiais</h2>
+
+        <p>As requisições na API não suportam a passagem de caracteres especiais como acentos e o cedilha, por esse motivo, tornou-se necessário a padronização de identificadores para que a API reconheça esse tipo de caractere. Na tabela abaixo, estão os simbolos que devem ser substituidos pelos caracteres especiais, bem como um exemplo de como funciona esse processo.</p>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">CARACTERE</th>
+              <th scope="col">SIMBOLO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>ã</td>
+                <td>__tila__</td>
+            </tr>
+            <tr>
+                <td>õ</td>
+                <td>__tilo__</td>
+            </tr>
+            <tr>
+                <td>â</td>
+                <td>__circunflexoa__</td>
+            </tr>
+            <tr>
+                <td>ê</td>
+                <td>__circunflexoe__</td>
+            </tr>
+            <tr>
+                <td>ô</td>
+                <td>__circunflexoo__</td>
+            </tr>
+            <tr>
+                <td>á</td>
+                <td>__agudoa__</td>
+            </tr>
+            <tr>
+                <td>é</td>
+                <td>__agudoe__</td>
+            </tr>
+            <tr>
+                <td>í</td>
+                <td>__agudoi__</td>
+            </tr>
+            <tr>
+                <td>ó</td>
+                <td>__agudoo__</td>
+            </tr>
+            <tr>
+                <td>ú</td>
+                <td>__agudou__</td>
+            </tr>
+            <tr>
+                <td>ç</td>
+                <td>__cedilha__</td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        <p><b>EXEMPLO:</b> Para buscar o município de São Paulo, deve-se enviar a palavra S__tila__o_Paulo.</p>
+
+        <h2>Busca Por Nome</h2>
+
+
+        <p><b>Requisição:</b> <span class="link">http://127.0.0.1:8000/api/municipio/<span class="parametro">Princesa_Isabel</span></span></p>
+
+        <p>
+            <b>Resposta:</b>
+
+            <span class="codigo">
+                <h4 class="space1">[</h4>
+
+                    <h4 class="space2">{</h4>
+                        <h4 class="space3">"codigo": 2512309, </h4>
+                        <h4 class="space3">"nome": "Princesa Isabel", </h4>
+                        <h4 class="space3">"uf": "PB", </h4>
+                        <h4 class="space3">"regiao": "Nordeste"</h4>
+                        <h4 class="space3">]</h4>
+                    <h4 class="space2">}</h4>
+
+                <h4 class="space1">]</h4>
+            </span>
+        </p>
+
+
+        <h2>Busca Por Código</h2>
+
+
+        <p><b>Requisição:</b> <span class="link">http://127.0.0.1:8000/api/municipio/<span class="parametro">2512309</span></span></p>
+
+        <p>
+            <b>Resposta:</b>
+
+            <span class="codigo">
+                <h4 class="space1">[</h4>
+
+                    <h4 class="space2">{</h4>
+                        <h4 class="space3">"codigo": 2512309, </h4>
+                        <h4 class="space3">"nome": "Princesa Isabel", </h4>
+                        <h4 class="space3">"uf": "PB", </h4>
+                        <h4 class="space3">"regiao": "Nordeste"</h4>
+                        <h4 class="space3">]</h4>
+                    <h4 class="space2">}</h4>
+
+                <h4 class="space1">]</h4>
+            </span>
+        </p>
+
+        <div class="margem_grande">
+
+        </div>
+
     </div>
+
+{#    rodapé    #}
+
+    <footer>
+
+        <div class="contato">
+            <br>
+            <h5>CONTATO</h5>
+            <h6>E-mail: diogosousa36@gmail.com</h6>
+            <h6>Linked in: <a href="https://www.linkedin.com/in/diogo-sousa-47164493/">Diogo Sousa</a> </h6>
+
+        </div>
+
+        <div class="ajuda">
+
+
+        </div>
+
+        <div class="legenda">Copyleft @2019 - Diogo Sousa</div>
+    </footer>
+
+
 
 
 

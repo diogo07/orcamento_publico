@@ -1,0 +1,259 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Despesas Orçamentárias</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/despesas.css' %}">
+
+</head>
+<body>
+    {#    menu     #}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand titulo" href="/">
+            Fiscaliza Cidadão API
+            <img src="{% static 'images/logo.png' %}" width="40" height="40" class="d-inline-block align-top" alt="">
+            </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+
+    <div class="container">
+
+        <h2>Introdução</h2>
+
+        <p>Para realizar requisições na parte de despesas é necessário a passagem de alguns parâmetros, dentre eles está o código de cada municipio, que é exemplificado na seção <a href="/municipios">municipios</a>. Essa API fornece três tipos de consultas para a parte de despesas orçamentárias, que são: despesas anuais por município; despesas anuais por classificação e município e; despesas anuais por função e município. Abaixo serão demonstrados alguns exemplos destas consultas.</p>
+
+
+        <h2>Despesas Anuais por Município</h2>
+
+        <p>Para esse tipo de consulta necessita-se do <a href="/municipios">código do município</a>, no exemplo abaixo, foi utilizado o código <span class="parametro">2512309</span>, do município de Princesa Isabel - PB. </p>
+
+        <p><b>Requisição:</b> <span class="link">http://127.0.0.1:8000/api/despesa/municipio/<span class="parametro">2512309</span></span></p>
+
+        <p>
+            <b>Resposta:</b>
+
+            <span class="codigo">
+                <h4 class="space1">[</h4>
+
+                    <h4 class="space2">{</h4>
+
+                        <h4 class="space3">"municipio": "Princesa Isabel", </h4>
+                        <h4 class="space3">"uf": "PB", </h4>
+                        <h4 class="space3">"regiao": "Nordeste", </h4>
+
+                        <h4 class="space3">"despesas": [</h4>
+
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"2014": 227145753.09</h4>
+                            <h4 class="space4">}, </h4>
+
+                            <h4 class="space4">{  </h4>
+                                <h4 class="space5">"2015": 224337491.89</h4>
+                            <h4 class="space4">}, </h4>
+
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"2016": 256799933.28</h4>
+                            <h4 class="space4">}, </h4>
+
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"2017": 266886081.0</h4>
+                            <h4 class="space4">}, </h4>
+
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"2018": 309200952.7</h4>
+                            <h4 class="space4">}</h4>
+                        <h4 class="space3">]</h4>
+
+                    <h4 class="space2">}</h4>
+
+                <h4 class="space1">]</h4>
+            </span>
+        </p>
+
+
+
+        <h2>Despesas por Município, Classificação e Ano</h2>
+
+        <p>Esse tipo de consulta requer a passagem de dois parâmetros, o primeiro é o <a href="/municipios">código do município</a>, que é exemplificado na seção municípios. Como exemplo, será usado o código da cidade de Princesa Isabel - PB, que corresponde a <span class="parametro">2512309</span>, o segundo parâmetro é o ano da receita, para este exemplo será utilizado o ano de <span class="parametro">2017</span>. Veja abaixo como ficou a consulta:</p>
+
+        <p><b>Requisição:</b> <span class="link">http://127.0.0.1:8000/api/despesa/classificacao/municipio/<span class="parametro">2512309</span>/ano/<span class="parametro">2017</span></span></p>
+
+        <p>
+            <b>Resposta:</b>
+
+            <span class="codigo">
+                <h4 class="space1">[</h4>
+
+                    <h4 class="space2">{</h4>
+
+                        <h4 class="space3">"municipio": "Princesa Isabel", </h4>
+                        <h4 class="space3">"uf": "PB", </h4>
+                        <h4 class="space3">"regiao": "Nordeste", </h4>
+
+                        <h4 class="space3">"ano": 2017</h4>
+
+
+
+
+                        <h4 class="space3">"despesas": [</h4>
+
+                             <h4 class="space4">{</h4>
+                                <h4 class="space5">"classificacao": "Despesas Empenhadas",</h4>
+                                <h4 class="space5">"valor": 89914007.56</h4>
+                             <h4 class="space4">}, </h4>
+                             <h4 class="space4">{</h4>
+                                <h4 class="space5">"classificacao": "Despesas Liquidadas",</h4>
+                                <h4 class="space5">"valor": 87058065.88,</h4>
+                             <h4 class="space4">}, </h4>
+                             <h4 class="space4">{</h4>
+                                <h4 class="space5">"classificacao": "Despesas Pagas",</h4>
+                                <h4 class="space5">"valor": 79191296.09</h4>
+                             <h4 class="space4">}, </h4>
+                             <h4 class="space4">{</h4>
+                                <h4 class="space5">"classificacao": "Inscrições de Restos a Pagar Não Processados",</h4>
+                                <h4 class="space5">"valor": 10722711.47</h4>
+                             <h4 class="space4">} </h4>
+
+
+                        <h4 class="space3">]</h4>
+
+                    <h4 class="space2">}</h4>
+
+                <h4 class="space1">]</h4>
+            </span>
+        </p>
+
+         <h2>Despesas por Município, Função e Ano</h2>
+
+        <p>Esse tipo de consulta requer a passagem de dois parâmetros, o primeiro é o <a href="/municipios">código do município</a>, que é exemplificado na seção municípios. Como exemplo, será usado o código da cidade de Princesa Isabel - PB, que corresponde a <span class="parametro">2512309</span>, o segundo parâmetro é o ano da receita, para este exemplo será utilizado o ano de <span class="parametro">2017</span>. Veja abaixo como ficou a consulta:</p>
+
+        <p><b>Requisição:</b> <span class="link">http://127.0.0.1:8000/api/despesa/funcao/municipio/<span class="parametro">2512309</span>/ano/<span class="parametro">2017</span></span></p>
+
+        <p>
+            <b>Resposta:</b>
+
+            <span class="codigo">
+                <h4 class="space1">[</h4>
+
+                    <h4 class="space2">{</h4>
+
+                        <h4 class="space3">"municipio": "Princesa Isabel", </h4>
+                        <h4 class="space3">"uf": "PB", </h4>
+                        <h4 class="space3">"regiao": "Nordeste", </h4>
+
+                        <h4 class="space3">"ano": 2017</h4>
+
+                        <h4 class="space3">"despesas": [</h4>
+
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"funcao": "Outras Despesas",
+                                <h4 class="space5">"valor": 138050693.98
+                            <h4 class="space4">}, </h4>
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"funcao": "Saúde",
+                                <h4 class="space5">"valor": 50227742.64
+                            <h4 class="space4">}, </h4>
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"funcao": "Educação",
+                                <h4 class="space5">"valor": 32553784.22
+                            <h4 class="space4">}, </h4>
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"funcao": "Urbanismo",
+                                <h4 class="space5">"valor": 12220052.43
+                            <h4 class="space4">}, </h4>
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"funcao": "Previdencia Social",
+                                <h4 class="space5">"valor": 9386253.63
+                            <h4 class="space4">}, </h4>
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"funcao": "Administração",
+                                <h4 class="space5">"valor": 8368427.97
+                            <h4 class="space4">}, </h4>
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"funcao": "Assistencia Social",</h4>
+                                <h4 class="space5">"valor": 4057166.19</h4>
+                            <h4 class="space4">}, </h4>
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"funcao": "Encargos Especiais",</h4>
+                                <h4 class="space5">"valor": 3249615.28</h4>
+                            <h4 class="space4">}, </h4>
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"funcao": "Cultura", </h4>
+                                <h4 class="space5">"valor": 2993320.34</h4>
+                            <h4 class="space4">}, </h4>
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"funcao": "Legislativa",</h4>
+                                <h4 class="space5">"valor": 2485804.02</h4>
+                            <h4 class="space4">}, </h4>
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"funcao": "Energia",</h4>
+                                <h4 class="space5">"valor": 1586553.09</h4>
+                            <h4 class="space4">}, </h4>
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"funcao": "Agricultura", </h4>
+                                <h4 class="space5">"valor": 1302908.4</h4>
+                            <h4 class="space4">}, </h4>
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"funcao": "Segurança Pública", </h4>
+                                <h4 class="space5">"valor": 259326.15</h4>
+                            <h4 class="space4">}, </h4>
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"funcao": "Desporto e Lazer", </h4>
+                                <h4 class="space5">"valor": 128006.97</h4>
+                            <h4 class="space4">}, </h4>
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"funcao": "Comunicações", </h4>
+                                <h4 class="space5">"valor": 9825.69</h4>
+                            <h4 class="space4">}, </h4>
+                            <h4 class="space4">{</h4>
+                                <h4 class="space5">"funcao": "Direitos a Cidadania", </h4>
+                                <h4 class="space5">"valor": 6600.0</h4>
+                            <h4 class="space4">}, </h4>
+
+                        <h4 class="space3">]</h4>
+
+                    <h4 class="space2">}</h4>
+
+                <h4 class="space1">]</h4>
+            </span>
+        </p>
+
+
+        <div class="margem_grande"></div>
+    </div>
+
+    {#    rodapé    #}
+
+    <footer>
+
+        <div class="contato">
+            <br>
+            <h5>CONTATO</h5>
+            <h6>E-mail: diogosousa36@gmail.com</h6>
+            <h6>Linked in: <a href="https://www.linkedin.com/in/diogo-sousa-47164493/">Diogo Sousa</a> </h6>
+
+        </div>
+
+        <div class="ajuda">
+
+
+        </div>
+
+        <div class="legenda">Copyleft @2019 - Diogo Sousa</div>
+    </footer>
+
+
+</body>
+
+
+</body>
+</html>

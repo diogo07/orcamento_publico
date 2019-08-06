@@ -3,6 +3,7 @@ from django.http import JsonResponse, HttpResponse
 from django.db.models import Sum
 from api.serializers import MunicipioSerializer, ReceitaSerializer
 from django.views.generic.edit import UpdateView
+import re
 
 # BUSCA O MUNICIPIO PELO CÓDIGO
 def municipio_by_codigo(request, codigo_municipio):
@@ -18,7 +19,9 @@ def municipio_by_codigo(request, codigo_municipio):
 # BUSCA O MUNICIPIO PELO NOME
 def municipio_by_nome(request, nome_municipio):
     try:
-        nome_tratado = nome_municipio.replace('_', ' ')
+        nome_acentuado = tratar_caracteres_especiais(nome_municipio)
+        print(nome_acentuado)
+        nome_tratado = nome_acentuado.replace('_', ' ')
         municipio = Municipio.objects.filter(nome__icontains=nome_tratado)
     except Municipio.DoesNotExist:
         return HttpResponse(status=404)
@@ -220,3 +223,18 @@ def receita_por_funcao_municipio_e_ano(request, codigo_municipio, ano):
     if request.method == 'GET':
         return JsonResponse(context, safe=False)
 
+
+def tratar_caracteres_especiais(palavra):
+    palavra = palavra.lower()
+    palavra = re.sub(r'__tila__', 'ã', palavra)
+    palavra = re.sub(r'__tilo__', 'õ', palavra)
+    palavra = re.sub(r'__circunflexoa__', 'â', palavra)
+    palavra = re.sub(r'__circunflexoe__', 'ê', palavra)
+    palavra = re.sub(r'__circunflexoo__', 'ô', palavra)
+    palavra = re.sub(r'__agudoa__', 'á', palavra)
+    palavra = re.sub(r'__agudoe__', 'é', palavra)
+    palavra = re.sub(r'__agudoi__', 'í', palavra)
+    palavra = re.sub(r'__agudoo__', 'ó', palavra)
+    palavra = re.sub(r'__agudou__', 'ú', palavra)
+    palavra = re.sub(r'__cedilha__', 'ç', palavra)
+    return palavra
