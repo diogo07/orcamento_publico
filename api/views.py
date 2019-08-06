@@ -4,7 +4,6 @@ from django.db.models import Sum
 from api.serializers import MunicipioSerializer, ReceitaSerializer
 from django.views.generic.edit import UpdateView
 import re
-
 # BUSCA O MUNICIPIO PELO CÓDIGO
 def municipio_by_codigo(request, codigo_municipio):
     try:
