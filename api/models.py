@@ -1,6 +1,5 @@
-
-import unidecode as unidecode
 from django.db import models
+from unidecode import unidecode
 
 class ClassificacaoDespesa(models.Model):
     codigo = models.IntegerField(primary_key=True)
