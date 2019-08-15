@@ -1,0 +1,42 @@
+
+PROBLEMAS COM CAIRO
+sudo apt-get install libpango1.0-0
+sudo apt-get install libcairo2
+sudo apt-get install libpq-dev
+
+
+instala o ngix com apt
+sudo service nginx restart
+testa o servico com o ip do servidor sem a porta
+
+install supervision com apt
+apt-get install supervisor
+
+
+criando atalhos dentro da virtual de cada projeto
+ln -s conf/supervisor.conf
+ln -s conf/nginx.conf
+
+adiciona o include
+nano /etc/nginx/nginx.conf
+include /webapps/*/nginx.conf;
+
+adiciona o include
+nano /etc/supervisor/supervisord.conf
+[include]
+files = /webapps/*/supervisor.conf
+
+
+CONFIGURA OS ARQUIVOS DO PROJETO
+
+NO SERVIDOR
+python manage.py collectstatic
+
+
+restart o nginx e supervisor
+
+
+restart so no projeto especifico
+supervisorctl restart infoeleitoresweb
+
+caso altere os confs do projeto restarta ngix ou supervisor
