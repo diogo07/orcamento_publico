@@ -4,7 +4,7 @@ from django.urls import path, include
 from orcamento_publico import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('', views.get_index),
     path('api/', include('api.urls'),),
     path('orcamento', views.get_orcamento),
