@@ -1,6 +1,6 @@
 from django.urls import path
 from api import views
-
+app_name = 'api'
 urlpatterns = [
 
     # BUSCA DE MUNICIPIO POR CODIGO E POR NOME

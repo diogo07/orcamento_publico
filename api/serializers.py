@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.models import Municipio, Receita
+from api.models import Municipio
 
 class MunicipioSerializer(serializers.ModelSerializer):
     class Meta:
