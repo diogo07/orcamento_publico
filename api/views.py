@@ -99,16 +99,17 @@ def despesa_por_funcao_municipio_e_ano(request, codigo_municipio, ano):
 # BUSCA AS DESPESAS DE UM MUNICIPIO, E AGRUPA O VALOR TOTAL POR ANO
 def despesa_por_municipio(request, codigo_municipio):
     try:
-        despesas = Despesa.objects.filter(municipio_codigo=codigo_municipio).values('municipio_codigo__nome', 'municipio_codigo__uf', 'municipio_codigo__regiao', 'ano').annotate(valor_total = Sum('valor')).order_by('ano')
+        despesas = Despesa.objects.filter(municipio_codigo=codigo_municipio).values('municipio_codigo__nome', 'municipio_codigo__uf', 'municipio_codigo__regiao', 'ano', 'classificacao_despesa_codigo__tipo').annotate(valor_total = Sum('valor')).order_by('ano')
 
         context = []
         dados = []
 
-        print(despesas[0]['ano'])
         for despesa in despesas:
             dados.append(
                 {
-                    despesa['ano']: despesa['valor_total']
+                    'ano': despesa['ano'],
+                    'classificacao': despesa['classificacao_despesa_codigo__tipo'],
+                    'valor': despesa['valor_total']
                 }
             )
 
@@ -240,12 +241,4 @@ def tratar_caracteres_especiais(palavra):
     return palavra
 
 # BUSCA MUNICIPIOS COM MAIORES DÉFICITS NO ANO
-# def municipios_by_saldo_negativo(request):
-#     try:
-#         municipio = Municipio.objects.filter().values('municipio_codigo__nome', 'municipio_codigo__uf', 'municipio_codigo__regiao', 'funcao_receita_codigo__tipo', 'ano').annotate(valor_total = Sum('valor')).order_by('-valor_total')
-#     except Municipio.DoesNotExist:
-#         return HttpResponse(status=404)
-#
-#     if request.method == 'GET':
-#         serializer = MunicipioSerializer(municipio, many=True)
-#         return JsonResponse(serializer.data, safe=False)
+#def municipios_by_saldo_negativo(request):
