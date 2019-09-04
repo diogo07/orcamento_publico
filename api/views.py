@@ -1,8 +1,7 @@
 from api.models import Municipio, Receita, Despesa
 from django.http import JsonResponse, HttpResponse
 from django.db.models import Sum
-from api.serializers import MunicipioSerializer, ReceitaSerializer
-from django.views.generic.edit import UpdateView
+from api.serializers import MunicipioSerializer
 import re
 # BUSCA O MUNICIPIO PELO CÓDIGO
 def municipio_by_codigo(request, codigo_municipio):
@@ -133,14 +132,19 @@ def despesa_por_municipio(request, codigo_municipio):
 # BUSCA AS RECEITAS DE UM MUNICIPIO, E AGRUPA O VALOR TOTAL POR ANO
 def receita_por_municipio(request, codigo_municipio):
     try:
-        receitas = Receita.objects.filter(municipio_codigo=codigo_municipio).values('municipio_codigo__nome', 'municipio_codigo__uf', 'municipio_codigo__regiao', 'ano').annotate(valor_total = Sum('valor')).order_by('ano')
+        receitas = Receita.objects.filter(municipio_codigo=codigo_municipio).values('municipio_codigo__nome',
+                                                                                    'municipio_codigo__uf',
+                                                                                    'municipio_codigo__regiao', 'ano').annotate(
+            valor_total=Sum('valor')).order_by('ano')
 
         context = []
         dados = []
+
         for receita in receitas:
             dados.append(
                 {
-                    receita['ano']: receita['valor_total']
+                    'ano': receita['ano'],
+                    'valor': receita['valor_total']
                 }
             )
 
@@ -154,7 +158,7 @@ def receita_por_municipio(request, codigo_municipio):
             }
         )
 
-    except Receita.DoesNotExist:
+    except Despesa.DoesNotExist:
         return HttpResponse(status=404)
 
     if request.method == 'GET':
