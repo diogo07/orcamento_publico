@@ -1,8 +1,7 @@
 from api.models import Municipio, Receita, Despesa
 from django.http import JsonResponse, HttpResponse
 from django.db.models import Sum
-from api.serializers import MunicipioSerializer, ReceitaSerializer
-from django.views.generic.edit import UpdateView
+from api.serializers import MunicipioSerializer
 import re
 # BUSCA O MUNICIPIO PELO CÓDIGO
 def municipio_by_codigo(request, codigo_municipio):
@@ -99,16 +98,17 @@ def despesa_por_funcao_municipio_e_ano(request, codigo_municipio, ano):
 # BUSCA AS DESPESAS DE UM MUNICIPIO, E AGRUPA O VALOR TOTAL POR ANO
 def despesa_por_municipio(request, codigo_municipio):
     try:
-        despesas = Despesa.objects.filter(municipio_codigo=codigo_municipio).values('municipio_codigo__nome', 'municipio_codigo__uf', 'municipio_codigo__regiao', 'ano').annotate(valor_total = Sum('valor')).order_by('ano')
+        despesas = Despesa.objects.filter(municipio_codigo=codigo_municipio).values('municipio_codigo__nome', 'municipio_codigo__uf', 'municipio_codigo__regiao', 'ano', 'classificacao_despesa_codigo__tipo').annotate(valor_total = Sum('valor')).order_by('ano')
 
         context = []
         dados = []
 
-        print(despesas[0]['ano'])
         for despesa in despesas:
             dados.append(
                 {
-                    despesa['ano']: despesa['valor_total']
+                    'ano': despesa['ano'],
+                    'classificacao': despesa['classificacao_despesa_codigo__tipo'],
+                    'valor': despesa['valor_total']
                 }
             )
 
@@ -132,14 +132,19 @@ def despesa_por_municipio(request, codigo_municipio):
 # BUSCA AS RECEITAS DE UM MUNICIPIO, E AGRUPA O VALOR TOTAL POR ANO
 def receita_por_municipio(request, codigo_municipio):
     try:
-        receitas = Receita.objects.filter(municipio_codigo=codigo_municipio).values('municipio_codigo__nome', 'municipio_codigo__uf', 'municipio_codigo__regiao', 'ano').annotate(valor_total = Sum('valor')).order_by('ano')
+        receitas = Receita.objects.filter(municipio_codigo=codigo_municipio).values('municipio_codigo__nome',
+                                                                                    'municipio_codigo__uf',
+                                                                                    'municipio_codigo__regiao', 'ano').annotate(
+            valor_total=Sum('valor')).order_by('ano')
 
         context = []
         dados = []
+
         for receita in receitas:
             dados.append(
                 {
-                    receita['ano']: receita['valor_total']
+                    'ano': receita['ano'],
+                    'valor': receita['valor_total']
                 }
             )
 
@@ -153,7 +158,7 @@ def receita_por_municipio(request, codigo_municipio):
             }
         )
 
-    except Receita.DoesNotExist:
+    except Despesa.DoesNotExist:
         return HttpResponse(status=404)
 
     if request.method == 'GET':
@@ -240,12 +245,4 @@ def tratar_caracteres_especiais(palavra):
     return palavra
 
 # BUSCA MUNICIPIOS COM MAIORES DÉFICITS NO ANO
-# def municipios_by_saldo_negativo(request):
-#     try:
-#         municipio = Municipio.objects.filter().values('municipio_codigo__nome', 'municipio_codigo__uf', 'municipio_codigo__regiao', 'funcao_receita_codigo__tipo', 'ano').annotate(valor_total = Sum('valor')).order_by('-valor_total')
-#     except Municipio.DoesNotExist:
-#         return HttpResponse(status=404)
-#
-#     if request.method == 'GET':
-#         serializer = MunicipioSerializer(municipio, many=True)
-#         return JsonResponse(serializer.data, safe=False)
+#def municipios_by_saldo_negativo(request):
