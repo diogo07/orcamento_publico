@@ -36,7 +36,7 @@
 
         <p>Para esse tipo de consulta necessita-se do <a href="/municipios">código do município</a>, no exemplo abaixo, foi utilizado o código <span class="parametro">2512309</span>, do município de Princesa Isabel - PB. </p>
 
-        <p><b>Requisição:</b> <span class="link">http://api.carlosecelso.com.br/api/despesa/municipio/<span class="parametro">2512309</span></span></p>
+        <p><b>Requisição:</b> <span class="link">http://op.repsys.com.br/api/despesa/municipio/<span class="parametro">2512309</span></span></p>
 
         <p>
             <b>Resposta:</b>
@@ -53,24 +53,18 @@
                         <h4 class="space3">"despesas": [</h4>
 
                             <h4 class="space4">{</h4>
-                                <h4 class="space5">"2014": 227145753.09</h4>
+								 <h4 class="space5">"ano": 2014</h4>
+                                <h4 class="space5">"classificacao": "Despesas Empenhadas"</h4>
+								 <h4 class="space5">"valor": 37969330.1</h4>
+                            <h4 class="space4">}, </h4>
+							
+							 <h4 class="space4">{</h4>
+								 <h4 class="space5">"ano": 2015</h4>
+                                <h4 class="space5">"classificacao": "Despesas Empenhadas"</h4>
+								 <h4 class="space5">"valor": 36622461.58</h4>
                             <h4 class="space4">}, </h4>
 
-                            <h4 class="space4">{  </h4>
-                                <h4 class="space5">"2015": 224337491.89</h4>
-                            <h4 class="space4">}, </h4>
-
-                            <h4 class="space4">{</h4>
-                                <h4 class="space5">"2016": 256799933.28</h4>
-                            <h4 class="space4">}, </h4>
-
-                            <h4 class="space4">{</h4>
-                                <h4 class="space5">"2017": 266886081.0</h4>
-                            <h4 class="space4">}, </h4>
-
-                            <h4 class="space4">{</h4>
-                                <h4 class="space5">"2018": 309200952.7</h4>
-                            <h4 class="space4">}</h4>
+                           
                         <h4 class="space3">]</h4>
 
                     <h4 class="space2">}</h4>
@@ -85,7 +79,7 @@
 
         <p>Esse tipo de consulta requer a passagem de dois parâmetros, o primeiro é o <a href="/municipios">código do município</a>, que é exemplificado na seção municípios. Como exemplo, será usado o código da cidade de Princesa Isabel - PB, que corresponde a <span class="parametro">2512309</span>, o segundo parâmetro é o ano da receita, para este exemplo será utilizado o ano de <span class="parametro">2017</span>. Veja abaixo como ficou a consulta:</p>
 
-        <p><b>Requisição:</b> <span class="link">http://api.carlosecelso.com.br/api/despesa/classificacao/municipio/<span class="parametro">2512309</span>/ano/<span class="parametro">2017</span></span></p>
+        <p><b>Requisição:</b> <span class="link">http://op.repsys.com.br/api/despesa/classificacao/municipio/<span class="parametro">2512309</span>/ano/<span class="parametro">2017</span></span></p>
 
         <p>
             <b>Resposta:</b>
@@ -136,7 +130,7 @@
 
         <p>Esse tipo de consulta requer a passagem de dois parâmetros, o primeiro é o <a href="/municipios">código do município</a>, que é exemplificado na seção municípios. Como exemplo, será usado o código da cidade de Princesa Isabel - PB, que corresponde a <span class="parametro">2512309</span>, o segundo parâmetro é o ano da receita, para este exemplo será utilizado o ano de <span class="parametro">2017</span>. Veja abaixo como ficou a consulta:</p>
 
-        <p><b>Requisição:</b> <span class="link">http://api.carlosecelso.com.br/api/despesa/funcao/municipio/<span class="parametro">2512309</span>/ano/<span class="parametro">2017</span></span></p>
+        <p><b>Requisição:</b> <span class="link">http://op.repsys.com.br/api/despesa/funcao/municipio/<span class="parametro">2512309</span>/ano/<span class="parametro">2017</span></span></p>
 
         <p>
             <b>Resposta:</b>
@@ -155,69 +149,41 @@
                         <h4 class="space3">"despesas": [</h4>
 
                             <h4 class="space4">{</h4>
+								<h4 class="space5">"classificacao": "Despesas Empenhadas",</h4>
                                 <h4 class="space5">"funcao": "Outras Despesas",
                                 <h4 class="space5">"valor": 138050693.98
                             <h4 class="space4">}, </h4>
                             <h4 class="space4">{</h4>
+								<h4 class="space5">"classificacao": "Despesas Empenhadas",</h4>
                                 <h4 class="space5">"funcao": "Saúde",
                                 <h4 class="space5">"valor": 50227742.64
                             <h4 class="space4">}, </h4>
                             <h4 class="space4">{</h4>
+								<h4 class="space5">"classificacao": "Despesas Empenhadas",</h4>
                                 <h4 class="space5">"funcao": "Educação",
                                 <h4 class="space5">"valor": 32553784.22
                             <h4 class="space4">}, </h4>
                             <h4 class="space4">{</h4>
+								<h4 class="space5">"classificacao": "Despesas Empenhadas",</h4>
                                 <h4 class="space5">"funcao": "Urbanismo",
                                 <h4 class="space5">"valor": 12220052.43
                             <h4 class="space4">}, </h4>
                             <h4 class="space4">{</h4>
+								<h4 class="space5">"classificacao": "Despesas Empenhadas",</h4>
                                 <h4 class="space5">"funcao": "Previdencia Social",
                                 <h4 class="space5">"valor": 9386253.63
                             <h4 class="space4">}, </h4>
                             <h4 class="space4">{</h4>
+								<h4 class="space5">"classificacao": "Despesas Empenhadas",</h4>
                                 <h4 class="space5">"funcao": "Administração",
                                 <h4 class="space5">"valor": 8368427.97
                             <h4 class="space4">}, </h4>
                             <h4 class="space4">{</h4>
+								<h4 class="space5">"classificacao": "Despesas Empenhadas",</h4>
                                 <h4 class="space5">"funcao": "Assistencia Social",</h4>
                                 <h4 class="space5">"valor": 4057166.19</h4>
                             <h4 class="space4">}, </h4>
-                            <h4 class="space4">{</h4>
-                                <h4 class="space5">"funcao": "Encargos Especiais",</h4>
-                                <h4 class="space5">"valor": 3249615.28</h4>
-                            <h4 class="space4">}, </h4>
-                            <h4 class="space4">{</h4>
-                                <h4 class="space5">"funcao": "Cultura", </h4>
-                                <h4 class="space5">"valor": 2993320.34</h4>
-                            <h4 class="space4">}, </h4>
-                            <h4 class="space4">{</h4>
-                                <h4 class="space5">"funcao": "Legislativa",</h4>
-                                <h4 class="space5">"valor": 2485804.02</h4>
-                            <h4 class="space4">}, </h4>
-                            <h4 class="space4">{</h4>
-                                <h4 class="space5">"funcao": "Energia",</h4>
-                                <h4 class="space5">"valor": 1586553.09</h4>
-                            <h4 class="space4">}, </h4>
-                            <h4 class="space4">{</h4>
-                                <h4 class="space5">"funcao": "Agricultura", </h4>
-                                <h4 class="space5">"valor": 1302908.4</h4>
-                            <h4 class="space4">}, </h4>
-                            <h4 class="space4">{</h4>
-                                <h4 class="space5">"funcao": "Segurança Pública", </h4>
-                                <h4 class="space5">"valor": 259326.15</h4>
-                            <h4 class="space4">}, </h4>
-                            <h4 class="space4">{</h4>
-                                <h4 class="space5">"funcao": "Desporto e Lazer", </h4>
-                                <h4 class="space5">"valor": 128006.97</h4>
-                            <h4 class="space4">}, </h4>
-                            <h4 class="space4">{</h4>
-                                <h4 class="space5">"funcao": "Comunicações", </h4>
-                                <h4 class="space5">"valor": 9825.69</h4>
-                            <h4 class="space4">}, </h4>
-                            <h4 class="space4">{</h4>
-                                <h4 class="space5">"funcao": "Direitos a Cidadania", </h4>
-                                <h4 class="space5">"valor": 6600.0</h4>
-                            <h4 class="space4">}, </h4>
+                            
 
                         <h4 class="space3">]</h4>
 

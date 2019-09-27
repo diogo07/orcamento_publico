@@ -39,7 +39,7 @@
 
         <p>Para esse tipo de consulta necessita-se do <a href="/municipios">código do município</a>, no exemplo abaixo, foi utilizado o código <span class="parametro">2512309</span>, do município de Princesa Isabel - PB. </p>
 
-        <p><b>Requisição:</b> <span class="link">http://api.carlosecelso.com.br/api/receita/municipio/<span class="parametro">2512309</span></span></p>
+        <p><b>Requisição:</b> <span class="link">http://op.repsys.com.br/api/receita/municipio/<span class="parametro">2512309</span></span></p>
 
         <p>
             <b>Resposta:</b>
@@ -56,23 +56,28 @@
                         <h4 class="space3">"receitas": [</h4>
 
                             <h4 class="space4">{</h4>
-                                <h4 class="space5">"2014": 40632311.88</h4>
+                                <h4 class="space5">"ano": 2014</h4>
+								<h4 class="space5">"valor": 40632311.88</h4>
                             <h4 class="space4">}, </h4>
 
                             <h4 class="space4">{  </h4>
-                                <h4 class="space5">"2015": 44758861.83</h4>
+								<h4 class="space5">"ano": 2015</h4>
+                                <h4 class="space5">"valor": 44758861.83</h4>
                             <h4 class="space4">}, </h4>
 
                             <h4 class="space4">{</h4>
-                                <h4 class="space5">"2016": 48023069.51</h4>
+								<h4 class="space5">"ano": 2016</h4>
+                                <h4 class="space5">"valor": 48023069.51</h4>
                             <h4 class="space4">}, </h4>
 
                             <h4 class="space4">{</h4>
-                                <h4 class="space5">"2017": 48143541.8</h4>
+								<h4 class="space5">"ano": 2017</h4>
+                                <h4 class="space5">"valor": 48143541.8</h4>
                             <h4 class="space4">}, </h4>
 
                             <h4 class="space4">{</h4>
-                                <h4 class="space5">"2018": 56975470.23</h4>
+								<h4 class="space5">"ano": 2018</h4>
+                                <h4 class="space5">"valor": 56975470.23</h4>
                             <h4 class="space4">}</h4>
                         <h4 class="space3">]</h4>
 
@@ -88,7 +93,7 @@
 
         <p>Esse tipo de consulta requer a passagem de dois parâmetros, o primeiro é o <a href="/municipios">código do município</a>, que é exemplificado na seção municípios. Como exemplo, será usado o código da cidade de Princesa Isabel - PB, que corresponde a <span class="parametro">2512309</span>, o segundo parâmetro é o ano da receita, para este exemplo será utilizado o ano de <span class="parametro">2017</span>. Veja abaixo como ficou a consulta:</p>
 
-        <p><b>Requisição:</b> <span class="link">http://api.carlosecelso.com.br/api/receita/classificacao/municipio/<span class="parametro">2512309</span>/ano/<span class="parametro">2017</span></span></p>
+        <p><b>Requisição:</b> <span class="link">http://op.repsys.com.br/api/receita/classificacao/municipio/<span class="parametro">2512309</span>/ano/<span class="parametro">2017</span></span></p>
 
         <p>
             <b>Resposta:</b>
@@ -130,7 +135,7 @@
 
         <p>Esse tipo de consulta requer a passagem de dois parâmetros, o primeiro é o <a href="/municipios">código do município</a>, que é exemplificado na seção municípios. Como exemplo, será usado o código da cidade de Princesa Isabel - PB, que corresponde a <span class="parametro">2512309</span>, o segundo parâmetro é o ano da receita, para este exemplo será utilizado o ano de <span class="parametro">2017</span>. Veja abaixo como ficou a consulta:</p>
 
-        <p><b>Requisição:</b> <span class="link">http://api.carlosecelso.com.br/api/receita/funcao/municipio/<span class="parametro">2512309</span>/ano/<span class="parametro">2017</span></span></p>
+        <p><b>Requisição:</b> <span class="link">http://op.repsys.com.br/api/receita/funcao/municipio/<span class="parametro">2512309</span>/ano/<span class="parametro">2017</span></span></p>
 
         <p>
             <b>Resposta:</b>
