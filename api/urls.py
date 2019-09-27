@@ -2,6 +2,8 @@ from django.urls import path
 
 from api import views
 app_name = 'api'
+
+
 urlpatterns = [
 
     # BUSCA DE MUNICIPIO POR CODIGO E POR NOME
@@ -25,5 +27,7 @@ urlpatterns = [
     # DESPESAS TOTAIS POR ANO DE UM MUNICIPIO
     path('receita/municipio/<int:codigo_municipio>', views.receita_por_municipio),
 
+    path('devedores', views.list_municipios_com_restos_a_pagar),
+    path('rankings/area/<int:area>/ano/<int:ano>', views.ranking_municipios_por_investimento),
 
 ]

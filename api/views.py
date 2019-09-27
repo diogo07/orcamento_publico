@@ -228,6 +228,44 @@ def receita_por_funcao_municipio_e_ano(request, codigo_municipio, ano):
     if request.method == 'GET':
         return JsonResponse(context, safe=False)
 
+from django.db import connection
+
+def list_municipios_com_restos_a_pagar(request):
+    with connection.cursor() as cursor:
+        cursor.execute("select d.ano, m.nome, (case when ((sum(case when cd.codigo in (4,5) then d.valor end)) / sum(case when cd.codigo = 2 then d.valor end) * 100) is not null then ((sum(case when cd.codigo in (4,5) then d.valor end)) / sum(case when cd.codigo = 2 then d.valor end) * 100) else 0.00 end) as porcentagem from despesa as d inner join municipio as m on m.codigo = d.municipio_codigo inner join classificacao_despesa as cd on cd.codigo = d.classificacao_despesa_codigo group by d.ano, m.nome order by porcentagem desc limit 10")
+        municipios = cursor.fetchall()
+
+    context = []
+
+    for m in municipios:
+        context.append({
+            'ano': m[0],
+            'municipio': m[1],
+            'porcentagem': m[2]
+        })
+
+    if request.method == 'GET':
+        return JsonResponse(context, safe=False)
+
+
+def ranking_municipios_por_investimento(request, area, ano):
+        with connection.cursor() as cursor:
+            cursor.execute("select d.ano, m.nome, m.uf, (case when ((sum(case when fd.codigo = "+str(area)+" then d.valor end)) / sum(d.valor) * 100) is not null then (((sum(case when fd.codigo = "+str(area)+" then d.valor end)) / sum(d.valor) * 100)) else 0.00 end) as porcentagem from despesa as d inner join municipio as m on m.codigo = d.municipio_codigo inner join classificacao_despesa as cd on cd.codigo = d.classificacao_despesa_codigo inner join funcao_despesa as fd on fd.codigo = d.funcao_despesa_codigo where cd.codigo = 2 and ano = "+str(ano)+" group by d.ano, m.nome, m.uf order by porcentagem desc limit 10")
+            municipios = cursor.fetchall()
+
+        context = []
+
+        for m in municipios:
+            context.append({
+                'ano': m[0],
+                'municipio': m[1],
+                'uf': m[2],
+                'porcentagem': m[3]
+            })
+
+        if request.method == 'GET':
+            return JsonResponse(context, safe=False)
+
 
 def tratar_caracteres_especiais(palavra):
     palavra = palavra.lower()
