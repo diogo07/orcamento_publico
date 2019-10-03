@@ -29,4 +29,6 @@ urlpatterns = [
 
     path('rankings/area/<int:area>/ano/<int:ano>', views.ranking_municipios_por_investimento),
 
+path('rankings/uf/<slug:uf>/area/<int:area>/ano/<int:ano>', views.ranking_municipios_por_uf_e_investimento),
+
 ]

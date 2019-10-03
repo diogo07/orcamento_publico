@@ -249,6 +249,28 @@ def ranking_municipios_por_investimento(request, area, ano):
             return JsonResponse(context, safe=False)
 
 
+def ranking_municipios_por_uf_e_investimento(request, uf, area, ano):
+    with connection.cursor() as cursor:
+        cursor.execute("select d.ano, m.nome, m.uf, (case when ((sum(case when fd.codigo = " + str(
+            area) + " then d.valor end)) / sum(d.valor) * 100) is not null then (((sum(case when fd.codigo = " + str(
+            area) + " then d.valor end)) / sum(d.valor) * 100)) else 0.00 end) as porcentagem from despesa as d inner join municipio as m on m.codigo = d.municipio_codigo inner join classificacao_despesa as cd on cd.codigo = d.classificacao_despesa_codigo inner join funcao_despesa as fd on fd.codigo = d.funcao_despesa_codigo where cd.codigo = 2 and m.uf = '" +str(uf)+ "' and ano = " + str(
+            ano) + " group by d.ano, m.nome, m.uf order by porcentagem desc limit 10")
+        municipios = cursor.fetchall()
+
+    context = []
+
+    for m in municipios:
+        context.append({
+            'ano': m[0],
+            'municipio': m[1],
+            'uf': m[2],
+            'porcentagem': m[3]
+        })
+
+    if request.method == 'GET':
+        return JsonResponse(context, safe=False)
+
+
 def tratar_caracteres_especiais(palavra):
     palavra = palavra.lower()
     palavra = re.sub(r'__tila__', 'ã', palavra)
