@@ -27,8 +27,12 @@ urlpatterns = [
     # DESPESAS TOTAIS POR ANO DE UM MUNICIPIO
     path('receita/municipio/<int:codigo_municipio>', views.receita_por_municipio),
 
+
+    #RANKINGS DE GASTOS POR ESTADO OU GERAL
     path('rankings/area/<int:area>/ano/<int:ano>', views.ranking_municipios_por_investimento),
+    path('rankings/uf/<slug:uf>/area/<int:area>/ano/<int:ano>', views.ranking_municipios_por_uf_e_investimento),
 
-path('rankings/uf/<slug:uf>/area/<int:area>/ano/<int:ano>', views.ranking_municipios_por_uf_e_investimento),
 
+
+    path('despesa/municipio/<int:codigo_municipio>/funcao/<int:codigo_funcao>', views.despesa_evolucao_por_funcao)
 ]

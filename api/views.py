@@ -286,5 +286,30 @@ def tratar_caracteres_especiais(palavra):
     palavra = re.sub(r'__cedilha__', 'ç', palavra)
     return palavra
 
-# BUSCA MUNICIPIOS COM MAIORES DÉFICITS NO ANO
-#def municipios_by_saldo_negativo(request):
+def despesa_evolucao_por_funcao(request, codigo_municipio, codigo_funcao):
+    try:
+        despesas = Despesa.objects.filter(municipio_codigo=codigo_municipio, funcao_despesa_codigo = codigo_funcao, classificacao_despesa_codigo = 2).values('funcao_despesa_codigo__tipo', 'ano').annotate(valor_total = Sum('valor')).order_by('-valor_total')
+
+        context = []
+        dados = []
+        for despesa in despesas:
+            dados.append(
+                {
+                    'ano' : despesa['ano'],
+                    'valor' : despesa['valor_total']
+                }
+            )
+
+        context.append(
+            {
+                'tipo': despesas[0]['funcao_despesa_codigo__tipo'],
+                'despesas': dados
+
+            }
+        )
+
+    except Despesa.DoesNotExist:
+        return HttpResponse(status=404)
+
+    if request.method == 'GET':
+        return JsonResponse(context, safe=False)
