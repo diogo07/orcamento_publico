@@ -217,7 +217,7 @@ def receita_por_funcao_municipio_e_ano(request, codigo_municipio, ano):
                 'uf': receitas[0]['municipio_codigo__uf'],
                 'regiao': receitas[0]['municipio_codigo__regiao'],
                 'ano': receitas[0]['ano'],
-                'despesas': dados
+                'receitas': dados
 
             }
         )
