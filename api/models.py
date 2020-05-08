@@ -6,7 +6,6 @@ class ClassificacaoDespesa(models.Model):
     tipo = models.CharField(max_length=45)
 
     class Meta:
-        managed = False
         db_table = 'classificacao_despesa'
 
 
@@ -15,7 +14,6 @@ class ClassificacaoReceita(models.Model):
     tipo = models.CharField(max_length=45)
 
     class Meta:
-        managed = False
         db_table = 'classificacao_receita'
 
 
@@ -28,7 +26,6 @@ class Despesa(models.Model):
     funcao_despesa_codigo = models.ForeignKey('FuncaoDespesa', models.DO_NOTHING, db_column='funcao_despesa_codigo')
 
     class Meta:
-        managed = False
         db_table = 'despesa'
 
 
@@ -37,7 +34,6 @@ class FuncaoDespesa(models.Model):
     tipo = models.CharField(max_length=45)
 
     class Meta:
-        managed = False
         db_table = 'funcao_despesa'
 
 
@@ -46,7 +42,6 @@ class FuncaoReceita(models.Model):
     tipo = models.CharField(max_length=170)
 
     class Meta:
-        managed = False
         db_table = 'funcao_receita'
 
 
@@ -63,7 +58,6 @@ class Municipio(models.Model):
         return unidecode(nome)
 
     class Meta:
-        managed = False
         db_table = 'municipio'
 
 
@@ -76,5 +70,4 @@ class Receita(models.Model):
     classificacao_receita_codigo = models.ForeignKey(ClassificacaoReceita, models.DO_NOTHING, db_column='classificacao_receita_codigo')
 
     class Meta:
-        managed = False
         db_table = 'receita'

@@ -1,0 +1,13 @@
+migrations/
+venv
+db.sqlite3
+confis/acesso.txt
+confis/comandos
+confis/mysql.txt
+confis/nginx.conf
+confis/supervisor.conf
+__pycache__/
+.idea/
+
+
+

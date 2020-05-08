@@ -1,0 +1,1 @@
+web: gunicorn orcamento_publico.wsgi
