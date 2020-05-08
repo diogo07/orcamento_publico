@@ -1,0 +1,13 @@
+
+h2{
+    margin-bottom: 50px;
+    margin-top: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+p{
+    text-align: justify;
+    text-indent: 2.5em;
+    font-family: 'Poppins', sans-serif;
+}
