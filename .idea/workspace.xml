@@ -72,11 +72,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\JS\PycharmProjects\orcamento_publico" />
       <recent name="$PROJECT_DIR$/orcamento_publico" />
       <recent name="$PROJECT_DIR$/confis" />
       <recent name="C:\Users\Diogo\PycharmProjects\orcamento_publico\orcamento_publico\static\images" />
       <recent name="C:\Users\Diogo\PycharmProjects\orcamento_publico\orcamento_publico" />
-      <recent name="C:\Users\Diogo\PycharmProjects\orcamento_publico\orcamento_publico\templates" />
     </key>
   </component>
   <component name="RunManager">
@@ -146,7 +146,9 @@
       <workItem from="1588468495705" duration="1966000" />
       <workItem from="1588518029647" duration="141000" />
       <workItem from="1588590722779" duration="194000" />
-      <workItem from="1588956585164" duration="6857000" />
+      <workItem from="1588956585164" duration="8059000" />
+      <workItem from="1589035904598" duration="654000" />
+      <workItem from="1589469050811" duration="259000" />
     </task>
     <task id="LOCAL-00001" summary="Implementação de requisição com espaço">
       <created>1564779119774</created>
@@ -232,22 +234,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="491" y="67" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588959322191" />
-    <state width="1310" height="91" key="GridCell.Tab.0.bottom" timestamp="1588959820458">
+    <state width="1310" height="91" key="GridCell.Tab.0.bottom" timestamp="1588976622179">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1310" height="91" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588959820457" />
-    <state width="1310" height="91" key="GridCell.Tab.0.center" timestamp="1588959820456">
+    <state width="1310" height="91" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588976622179" />
+    <state width="1310" height="91" key="GridCell.Tab.0.center" timestamp="1588976622179">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1310" height="91" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588959820456" />
-    <state width="1310" height="91" key="GridCell.Tab.0.left" timestamp="1588959820455">
+    <state width="1310" height="91" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588976622179" />
+    <state width="1310" height="91" key="GridCell.Tab.0.left" timestamp="1588976622179">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1310" height="91" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588959820455" />
-    <state width="1310" height="91" key="GridCell.Tab.0.right" timestamp="1588959820456">
+    <state width="1310" height="91" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588976622179" />
+    <state width="1310" height="91" key="GridCell.Tab.0.right" timestamp="1588976622179">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1310" height="91" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588959820456" />
+    <state width="1310" height="91" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588976622179" />
     <state x="-254" y="0" key="SettingsEditor" timestamp="1588959396205">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
