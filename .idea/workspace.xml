@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6fe47d11-13cd-43d3-9825-4d54f1beeddc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -148,7 +149,8 @@
       <workItem from="1588590722779" duration="194000" />
       <workItem from="1588956585164" duration="8059000" />
       <workItem from="1589035904598" duration="654000" />
-      <workItem from="1589469050811" duration="259000" />
+      <workItem from="1589469050811" duration="863000" />
+      <workItem from="1589470275130" duration="2000" />
     </task>
     <task id="LOCAL-00001" summary="Implementação de requisição com espaço">
       <created>1564779119774</created>
