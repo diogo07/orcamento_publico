@@ -5,8 +5,8 @@ confis/comandos
 confis/mysql.txt
 confis/nginx.conf
 confis/supervisor.conf
-__pycache__/
-.idea/
+__pycache__
+.idea
 
 
 
